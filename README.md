@@ -15,9 +15,10 @@ It contains **three main versions (v1, v2, v3)**, each representing a stage of m
   Splits the dataset into four seasons (**Winter, Spring, Summer, Fall**) and trains a separate XGBoost model for each.  
   Each seasonal model is trained on **100,000 data samples** to capture unique environmental conditions.
 
-- **v3 — Data Reduction Test**  
-  Repeats the seasonal training setup but reduces the training data size to **70,000 samples per season**  
-  to observe how data volume affects performance and stability.
+- **v3 - Daylight-Only Data Version**
+Trains and evaluates models using only daylight samples — nighttime data was completely removed.
+As a result, each season now contains almost half the number of samples compared to the previous version,
+allowing a focused assessment of model accuracy and stability under daytime-only conditions.
 
 ---
 
