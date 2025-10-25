@@ -1,7 +1,7 @@
 # ☀️ Solar Panels Power Prediction using XGBoost
 This script trains an optimized XGBoost regression model to predict solar panel power output using selected feature sets (IG and PCC). It includes automatic hyperparameter tuning via RandomizedSearchCV, missing value handling, performance evaluation (R², RMSE), and visualizations for model results and feature importance.  
 
-This project aims to **predict the generated power output of solar panels** at King Khalid University using advanced machine learning techniques — specifically the **XGBoost regression model**.  
+This project aims to **predict the generated power output of solar panels**  using advanced machine learning techniques — specifically the **XGBoost regression model**.  
 The project includes full data cleaning, preprocessing, feature selection, model training, and API deployment using **FastAPI**.
 
 ---
