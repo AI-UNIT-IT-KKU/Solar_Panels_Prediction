@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Solar Panels Prediction</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
+
+  <style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background-color: white;
+    color: #222;
+  }
+
+  /* ====== Landing ====== */
+  #landing {
+    position: relative;
+    height: 100vh;
+    background: url("/static/images/solarpanels.webp") center/cover no-repeat;
+  }
+
+  #landing .logo {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 110px;
+  }
+
+  .info-box {
+    position: absolute;
+    bottom: 60px;
+    left: 60px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 25px 30px;
+    max-width: 420px;
+  }
+
+  .start-btn {
+    background: white;
+    border: none;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: 500;
+  }
+
+  .start-btn:hover { background: #f1f1f1; }
+
+  /* ====== Prediction ====== */
+  #prediction {
+    display: none;
+    background: white;
+    min-height: 100vh;
+  }
+
+  .top-half {
+    position: relative;
+    height: 50vh;
+    background: url("/static/images/solarpanels.webp") center/cover no-repeat;
+  }
+
+  .top-half .logo {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 110px;
+  }
+
+  .bottom-half {
+    background-color: white;
+    text-align: center;
+    padding: 60px 40px;
+  }
+
+  .divider {
+    width: 90%;
+    height: 1px;
+    background-color: #ccc;
+    margin: 50px auto;
+  }
+
+  .main-title {
+    font-size: 40px;
+    font-weight: 600;
+    margin-bottom: 40px;
+    color: #000;
+  }
+
+  .option-btn {
+    border: none;
+    background: none;
+    cursor: pointer;
+    margin: 0 40px;
+    transition: 0.3s;
+  }
+
+  .option-btn img {
+    width: 130px;
+    height: 130px;
+    border-radius: 15px;
+  }
+
+  .option-btn:hover { transform: scale(1.05); }
+  .option-btn p { font-weight: bold; font-size: 20px; margin-top: 10px; }
+
+  /* ====== Form section ====== */
+  #form-section {
+    display: none;
+    margin-top: 40px;
+    text-align: left;
+    width: 60%;
+    margin: 0 auto; /* ✅ وسط الصفحة */
+  }
+
+  label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+
+  input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #aaa;
+    border-radius: 6px;
+    font-size: 15px;
+  }
+
+  .result-btn {
+    background-color: #155d27;
+    color: white;
+    border: none;
+    width: 100%;
+    padding: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 15px;
+    transition: 0.3s ease;
+  }
+
+  .result-btn:hover { background-color: #0e441c; }
+
+  .result {
+    margin-top: 35px;
+    font-size: 26px;
+    font-weight: bold;
+    color: #000;
+    display: none;
+    text-align: center;
+  }
+
+  .result span {
+    color: #155d27;
+    font-size: 28px;
+  }
+
+  .back-btn {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    background-color: rgba(255,255,255,0.8);
+    color: #000;
+    padding: 8px 18px;
+    border-radius: 6px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .back-btn:hover { background-color: rgba(255,255,255,1); }
+
+  /* ====== Season buttons ====== */
+  .season-btn {
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: 0.3s;
+    text-align: center;
+  }
+  .season-btn img {
+    width: 90px;
+    height: 90px;
+    border-radius: 12px;
+    border: 2px solid transparent;
+  }
+  .season-btn:hover img {
+    transform: scale(1.08);
+    border-color: #155d27;
+  }
+  .season-btn p {
+    font-weight: 600;
+    margin-top: 8px;
+  }
+
+  /* ✅ الوسط الكامل لأزرار الفصول */
+  #season-select {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  #season-select div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    flex-wrap: wrap;
+  }
+  </style>
+</head>
+
+<body>
+  <!-- ====== Landing ====== -->
+  <div id="landing">
+    <img src="/static/images/logo.png" class="logo" alt="Logo">
+    <div class="info-box">
+      <h2>Solar Panels of King Khalid's University</h2>
+      <p>Solar energy is one of King Khalid's University leading renewable initiatives, contributing to Saudi Arabia’s Vision 2030.</p>
+      <button class="start-btn" onclick="goToPrediction()">Start</button>
+    </div>
+  </div>
+
+  <!-- ====== Prediction ====== -->
+  <div id="prediction">
+    <div class="top-half">
+      <img src="/static/images/logo.png" class="logo" alt="Logo">
+      <button class="back-btn" onclick="goToLanding()">← Back</button>
+    </div>
+
+    <div class="bottom-half">
+      <h1 class="main-title">Solar Panels Of King Khalid University</h1>
+
+      <div>
+        <button class="option-btn" onclick="showPredictForm()">
+          <img src="/static/images/predict.png" alt="Predict">
+          <p>Predict</p>
+        </button>
+
+        <button class="option-btn" onclick="showForecast()">
+          <img src="/static/images/forecast.png" alt="Forecast">
+          <p>Forecast</p>
+        </button>
+      </div>
+
+      <!-- Form section -->
+      <div id="form-section">
+        <div class="divider"></div>
+
+        <!-- Select season -->
+        <div id="season-select">
+          <h3>Select Season:</h3>
+          <div>
+            <button class="season-btn" onclick="selectSeason('winter')">
+              <img src="/static/images/winter.png" alt="Winter"><p>Winter</p>
+            </button>
+            <button class="season-btn" onclick="selectSeason('spring')">
+              <img src="/static/images/spring.png" alt="Spring"><p>Spring</p>
+            </button>
+            <button class="season-btn" onclick="selectSeason('summer')">
+              <img src="/static/images/summer.png" alt="Summer"><p>Summer</p>
+            </button>
+            <button class="season-btn" onclick="selectSeason('fall')">
+              <img src="/static/images/fall.png" alt="Fall"><p>Fall</p>
+            </button>
+          </div>
+        </div>
+
+        <!-- Dynamic features form -->
+        <form id="predict-form" style="display:none;">
+          <div id="dynamic-fields"></div>
+          <input type="hidden" name="season" id="season-input">
+          <button type="submit" class="result-btn">Result</button>
+        </form>
+
+        <h2 id="result-box" class="result">
+          Predicted <span id="result-season"></span> Power:
+          <span id="result-value"></span> (control_ppc_active_power_1m)
+        </h2>
+      </div>
+    </div>
+  </div>
+
+<script>
+function goToPrediction() {
+  document.getElementById("landing").style.display = "none";
+  document.getElementById("prediction").style.display = "block";
+}
+
+function goToLanding() {
+  document.getElementById("prediction").style.display = "none";
+  document.getElementById("landing").style.display = "block";
+}
+
+function showPredictForm() {
+  document.getElementById("form-section").style.display = "block";
+  document.getElementById("season-select").scrollIntoView({ behavior: "smooth", block: "center" });
+}
+
+function showForecast() {
+  alert("Forecast feature coming soon!");
+}
+
+/* === When season is selected === */
+async function selectSeason(season) {
+  document.getElementById("season-input").value = season;
+
+  const res = await fetch("/features", {
+    method: "POST",
+    body: new URLSearchParams({ season })
+  });
+  const data = await res.json();
+
+  const container = document.getElementById("dynamic-fields");
+  container.innerHTML = "";
+
+  data.features.forEach((name) => {
+    container.innerHTML += `
+      <label>${name}</label>
+      <input type="text" name="features" required>
+    `;
+  });
+
+  document.getElementById("predict-form").style.display = "block";
+  document.getElementById("predict-form").scrollIntoView({ behavior: "smooth", block: "center" });
+}
+
+/* === Submit to FastAPI === */
+document.getElementById("predict-form").addEventListener("submit", async function (e) {
+  e.preventDefault();
+  const form = e.target;
+  const btn = form.querySelector(".result-btn");
+  const resultBox = document.getElementById("result-box");
+  const resultValue = document.getElementById("result-value");
+  const resultSeason = document.getElementById("result-season");
+
+  // ✅ Allow comma or dot as decimal separator
+  form.querySelectorAll("input[name='features']").forEach(inp => {
+    inp.value = inp.value.replace(/,/g, ".");
+  });
+
+  const formData = new FormData(form);
+  btn.disabled = true;
+  btn.textContent = "Calculating...";
+
+  try {
+    const res = await fetch("/predict", { method: "POST", body: formData });
+    const data = await res.json();
+
+    // Format number with commas for readability
+    const formatted = Number(data.result).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+    resultValue.textContent = formatted;
+    resultSeason.textContent = data.season;
+    resultBox.style.display = "block";
+    resultBox.scrollIntoView({ behavior: "smooth", block: "center" });
+  } catch {
+    alert("Error occurred. Please try again.");
+  } finally {
+    btn.disabled = false;
+    btn.textContent = "Result";
+  }
+});
+</script>
+</body>
+</html>
