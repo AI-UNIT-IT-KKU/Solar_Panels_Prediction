@@ -55,5 +55,23 @@ Below is a short demonstration of the solar power prediction web interface.
 It showcases how users can input their data and instantly view the predicted power output.
 
 <p align="center">
-  <img src="https://github.com/AI-UNIT-IT-KKU/Solar_Panels_Prediction/raw/main/demo.gif" alt="Solar Power Prediction Demo" width="800">
+  <img src="https://github.com/AI-UNIT-IT-KKU/Solar_Panels_Prediction/raw/main/v3/Static/images/demo.gif" alt="Solar Power Prediction Demo" width="800">
 </p>
+
+---
+
+## 🧠 Technologies Used
+
+This project integrates multiple technologies to achieve accurate predictions and a user-friendly interface:
+
+- 🐍 **Python** — Core programming language used for data analysis and model development.  
+- 📓 **Jupyter Notebook** — Used for experimentation, model training, and visualization.  
+- ⚙️ **XGBoost** — The main machine learning algorithm powering the solar power predictions.  
+- 🚀 **FastAPI** — Backend framework for building the interactive web interface.  
+- 🧮 **Pandas & NumPy** — For data preprocessing, cleaning, and numerical computations.  
+- 📊 **scikit-learn** — Used for feature selection, evaluation metrics, and preprocessing utilities.  
+- 🌐 **HTML, CSS, JavaScript** — To create the simple, responsive frontend connected to FastAPI.
+
+---
+
+
