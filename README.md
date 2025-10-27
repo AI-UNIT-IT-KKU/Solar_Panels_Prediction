@@ -46,3 +46,14 @@ influence the accuracy and reliability of solar power prediction using **XGBoost
 ## 🧩 Overview
 This repository represents an iterative journey — from model selection to optimization and efficiency testing —  
 all focused on understanding how **machine learning** can improve solar energy forecasting.
+
+---
+
+## 🎥 Demo — Website in Action
+
+Below is a short demonstration of the solar power prediction web interface.  
+It showcases how users can input their data and instantly view the predicted power output.
+
+<p align="center">
+  <img src="https://github.com/AI-UNIT-IT-KKU/Solar_Panels_Prediction/raw/main/demo.gif" alt="Solar Power Prediction Demo" width="800">
+</p>
