@@ -70,7 +70,7 @@ This project integrates multiple technologies to achieve accurate predictions an
 - 🚀 **FastAPI** — Backend framework for building the interactive web interface.  
 - 🧮 **Pandas & NumPy** — For data preprocessing, cleaning, and numerical computations.  
 - 📊 **scikit-learn** — Used for feature selection, evaluation metrics, and preprocessing utilities.  
-- 🌐 **HTML, CSS, JavaScript** — To create the simple, responsive frontend connected to FastAPI.
+- 🌐 **HTML, CSS** — To create the simple, responsive frontend connected to FastAPI.
 
 ---
 
